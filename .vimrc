@@ -69,3 +69,9 @@ set smartcase
 hi CursorLine   cterm=NONE ctermbg=DarkGray
 hi CursorColumn cterm=NONE ctermbg=DarkGray
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+" Show trailing whitespace as error
+match ErrorMsg '\s\+$'
+
+" Keyboard shortcut to remove trailing whitespace
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>
