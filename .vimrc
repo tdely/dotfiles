@@ -65,6 +65,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Mark with column at 80 line width
+set colorcolumn=80
+
 " Highlight line and column (toggle with '\c')
 hi CursorLine   cterm=NONE ctermbg=DarkGray
 hi CursorColumn cterm=NONE ctermbg=DarkGray
