@@ -73,8 +73,39 @@ hi CursorLine   cterm=NONE ctermbg=DarkGray
 hi CursorColumn cterm=NONE ctermbg=DarkGray
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
+" Toggle line length column marker
+function! ColorColumnToggle()
+    if !&colorcolumn
+        setlocal colorcolumn=80
+    elseif &colorcolumn == 80
+        setlocal colorcolumn=120
+    else
+        setlocal colorcolumn=0
+    endif
+endfunction
+nnoremap <Leader>l :call ColorColumnToggle()<CR>
+
+" Toggle paste mode
+nnoremap <Leader>p :set paste!<CR>
+
+" Allow modified buffers to be hidden
+set hidden
+
+" Open new buffer
+nnoremap <C-t> :enew<CR>
+
+" Move between buffers
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+" Close buffer and move to previous buffer
+nnoremap <C-w> :bp <BAR> bd #<CR>
+
+" List status of open buffers
+nnoremap <Leader>bl :ls<CR>
+
 " Show trailing whitespace as error
 match ErrorMsg '\s\+$'
 
 " Keyboard shortcut to remove trailing whitespace
-nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+nnoremap <Leader>w :%s/\s\+$//e<CR>
