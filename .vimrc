@@ -1,25 +1,21 @@
 " Enable syntax highlighting
 syntax on
+set encoding=utf8
+set fenc=utf-8
 
 try
     colorscheme desert
 catch
 endtry
+set background=dark
 
-set encoding=utf8
+let mapleader=","
 
 " Allow intelligent auto-indenting for each filetype
 filetype indent plugin on
 
-" Stop certain movements from always going to the first character of a line.
 set nostartofline
-
-" Display the cursor position on the last line of the screen or in the
-" status line of a window
-set ruler
-
-" Always display the status line, even if only one window is displayed
-set laststatus=2
+set backspace=indent,eol,start
 
 " Raise dialogue on unsaved changes
 set confirm
@@ -30,43 +26,27 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Set the command window height to 2 lines
-set cmdheight=2
-
-" Display line numbers
+set statusline=%f[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set laststatus=2
+set display=lastline
+set cmdheight=2 " Set the command window height to 2 lines
+set showmode
+set showcmd
 set number
+set hidden
 
-" Enable mouse for all modes
-"set mouse=a
-
-" Spaces instead of tabs
 set expandtab
-
 set smarttab
-
-" 1 tab is 4 spaces
-set shiftwidth=4
 set softtabstop=4
-
-" Keep indentation on new line when no filetype-specific indenting is
-" enabled
+set shiftwidth=4
 set autoindent
-
-" Indent after if, else, etc.
 set smartindent
-
-" Theme for dark background
-set background=dark
 
 " Move cursor to matched string while typing the search pattern
 set incsearch
 
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
-
-" Mark with column at 80 line width
-set colorcolumn=80
+set ignorecase " Use case insensitive search
+set smartcase  " ..except when using capital letters
 
 " Highlight line and column (toggle with '\c')
 hi CursorLine   cterm=NONE ctermbg=DarkGray
@@ -74,6 +54,7 @@ hi CursorColumn cterm=NONE ctermbg=DarkGray
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 " Toggle line length column marker
+set colorcolumn=80
 function! ColorColumnToggle()
     if !&colorcolumn
         setlocal colorcolumn=80
@@ -88,9 +69,6 @@ nnoremap <Leader>l :call ColorColumnToggle()<CR>
 " Toggle paste mode
 nnoremap <Leader>p :set paste!<CR>
 
-" Allow modified buffers to be hidden
-set hidden
-
 " Open new buffer
 nnoremap <C-t> :enew<CR>
 
@@ -99,10 +77,13 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
 " Close buffer and move to previous buffer
-nnoremap <C-w> :bp <BAR> bd #<CR>
+nnoremap <Leader>bc :bp <BAR> bd #<CR>
 
 " List status of open buffers
 nnoremap <Leader>bl :ls<CR>
+
+" sudo write to file
+command W w !sudo tee %
 
 " Show trailing whitespace as error
 match ErrorMsg '\s\+$'
