@@ -48,7 +48,10 @@ set incsearch
 set ignorecase " Use case insensitive search
 set smartcase  " ..except when using capital letters
 
-" Highlight line and column (toggle with '\c')
+" Show trailing whitespace as error
+match ErrorMsg '\s\+$'
+
+" Toggleable highlight of line and column
 hi CursorLine   cterm=NONE ctermbg=DarkGray
 hi CursorColumn cterm=NONE ctermbg=DarkGray
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
@@ -66,27 +69,23 @@ function! ColorColumnToggle()
 endfunction
 nnoremap <Leader>l :call ColorColumnToggle()<CR>
 
-" Toggle paste mode
-nnoremap <Leader>p :set paste!<CR>
+imap <S-Insert> <C-R>*  " Paste on Shift-Insert
 
-" Open new buffer
-nnoremap <C-t> :enew<CR>
+nmap <C-w> <C-S-w>  " Use CTRL-SHIFT for window control
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
 
-" Move between buffers
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <Leader>p :set paste!<CR>   " Toggle paste mode
+nnoremap <C-t> :tabnew<CR>           " Open new tab
+nnoremap <Tab> :tabnext<CR>          " Next tab
+nnoremap <S-Tab> :tabprevious<CR>    " Prev tab
+nnoremap <C-w> :tabclose<CR>         " Close tab
+nnoremap <C-Tab> :bnext<CR>          " Next buffer
+nnoremap <C-S-Tab> :bprevious<CR>    " Prev buffer
+nnoremap <C-A-w> :bp <BAR> bd #<CR>  " Close buffer and move to previous
+nnoremap <Leader>w :%s/\s\+$//e<CR>  " Remove trailing whitespace
 
-" Close buffer and move to previous buffer
-nnoremap <Leader>bc :bp <BAR> bd #<CR>
-
-" List status of open buffers
-nnoremap <Leader>bl :ls<CR>
-
-" sudo write to file
-command W w !sudo tee %
-
-" Show trailing whitespace as error
-match ErrorMsg '\s\+$'
-
-" Keyboard shortcut to remove trailing whitespace
-nnoremap <Leader>w :%s/\s\+$//e<CR>
+command W w !sudo tee %    " sudo write to file
+command Strip %s/\s\+$//e  " Command to remove trailing whitespace
