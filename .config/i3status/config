@@ -7,86 +7,156 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 5
+    colors = true
+    # More contrasty colors
+    # color_good = "#60b48a"
+    # color_bad = "#CC1616"
+    # color_degraded = "#55858E"
+
+    # Zen colors
+    color_good = "#709080"
+    color_bad = "#dc6f6f"
+    color_degraded = "#dfaf8f"
+    interval = 5
 }
 
-order += "volume master"
 order += "cpu_usage"
 order += "load"
+order += "cpu_temperature 0"
 order += "ethernet br0"
-order += "disk /"
 order += "memory"
+order += "disk /"
+order += "disk /home"
+order += "disk /tiny"
+order += "volume master"
 order += "tztime local"
 
 volume master {
-	format = " ♪: %volume "
+	format = " ♪ %volume "
+    format_muted = " ♪ !(%volume) "
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
 }
 
 load {
-	format = " Δ: %1min "
+	format = " Δ %1min′ %5min″ %15min‴ "
+    max_threshold = 5
 }
 
 cpu_usage {
-	format = " CPU %usage "
+	format = " 💮 %usage "
+    format_above_degraded_threshold = " 🌸 %usage "
+    format_above_threshold = " 🏵️ %usage "
+    max_threshold = 95
+    degraded_threshold = 75
 }
 
 cpu_temperature 0 {
-	format = " ± %degrees°"
-	path = "/sys/devices/platform/coretemp.0/temp2_input"
-	max_threshold = 95
+	format = " ❄️ %degrees°C "
+	format_above_threshold = " 🔥 %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+	max_threshold = 75
 }
 
 cpu_temperature 1 {
-	format = "%degrees°"
-	path = "/sys/devices/platform/coretemp.0/temp3_input"
-	max_threshold = 95
+	format = " ❄️ %degrees°C "
+	format_above_threshold = " 🔥 %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp2_input"
+	max_threshold = 75
 }
 
 cpu_temperature 2 {
-	format = "%degrees°"
-	path = "/sys/devices/platform/coretemp.0/temp4_input"
-	max_threshold = 95
+	format = " ❄️ %degrees°C "
+	format_above_threshold = " 🔥 %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp3_input"
+	max_threshold = 75
 }
 
 cpu_temperature 3 {
-	format = "%degrees° "
-	path = "/sys/devices/platform/coretemp.0/temp5_input"
-	max_threshold = 95
+	format = " ❄️ %degrees°C "
+	format_above_threshold = " 🔥 %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp4_input"
+	max_threshold = 75
+}
+
+cpu_temperature 4 {
+	format = " ❄️ %degrees°C "
+	format_above_threshold = " 🔥 %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp5_input"
+	max_threshold = 75
+}
+
+cpu_temperature 5 {
+	format = " ❄️ %degrees°C "
+	format_above_threshold = " 🔥 %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp6_input"
+	max_threshold = 75
+}
+
+cpu_temperature 6 {
+	format = " ❄️ %degrees°C "
+	format_above_threshold = " 🔥 %degrees°C "
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp7_input"
+	max_threshold = 75
 }
 
 wireless _first_ {
-        format_up = " W: (%quality at %essid) %ip "
-        format_down = " W: down "
+    format_up = " 【%essid】%ip (%quality) "
+    format_down = " 🔴⸢wifi⸥ "
 }
 
 ethernet _first_ {
-        format_up = " Eth: %ip (%speed) "
-        format_down = " Eth: down "
+    format_up = " %ip "
+    format_down = " 🔴⸢eth⸥ "
 }
 
 ethernet br0 {
-        format_up = " Eth: %ip (%speed) "
-        format_down = " Eth: down "
+    format_up = " %ip "
+    format_down = " 🔴⸢eth⸥ "
 }
 
 battery all {
-        format = "%status %percentage %remaining"
+    format = "%status %percentage %remaining"
+    format_down = "No battery"
+    format_percentage = "%f%s"
+    low_threshold = 10
+    threshold_type = time
+    status_chr = ⚡
+    status_bat = 🔋
+    status_unk = ❓
+    status_full = 🈵
 }
 
 disk "/" {
-        format = " / %avail "
+    format = " ⸢/⸥ %avail "
+    low_threshold = 5
+    threshold_type = percentage_free
+
+}
+
+disk "/home" {
+    format = " ⸢/home⸥ %avail "
+    low_threshold = 5
+    threshold_type = percentage_free
+
+}
+
+disk "/tiny" {
+    format = " ⸢/tiny⸥ %avail "
+    low_threshold = 5
+    threshold_type = percentage_free
+
 }
 
 memory {
-        format = " Mem: %used | %available "
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+    memory_used_method = memavailable
+    format = " 🟢 %free "
+    threshold_degraded = "10%"
+    threshold_critical = "5%"
+    format_degraded = " 🟡 %free"
 }
 
 tztime local {
-        format = " %Y-%m-%d %H:%M:%S "
+    format = " %Y-%m-%d %H:%M:%S "
 }
