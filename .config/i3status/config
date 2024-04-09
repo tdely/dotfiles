@@ -17,7 +17,7 @@ general {
     color_good = "#709080"
     color_bad = "#dc6f6f"
     color_degraded = "#dfaf8f"
-    interval = 5
+    interval = 1
 }
 
 order += "cpu_usage"
