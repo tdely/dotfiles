@@ -1,6 +1,7 @@
 vim.opt.guicursor = 'a:block,r:hor25'
 
 vim.opt.nu = true
+vim.opt.relativenumber = true
 
 vim.opt.mouse = ''
 
