@@ -40,4 +40,5 @@ source $HOME/.aliases
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^^i "tcht.sh\n"
+bindkey -s ^f "tsesh\n"
