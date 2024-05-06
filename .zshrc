@@ -1,5 +1,10 @@
-export PATH="$HOME/.local/bin:/usr/local/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:$HOME/.nimble/bin"
 export ZSH="$HOME/.oh-my-zsh"
+
+path+=("/usr/local/bin")
+path+=("/usr/local/sbin")
+path+=("/sbin")
+path=("$HOME/.nimble/bin" $path)
+export PATH
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="sunrise"
@@ -20,7 +25,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(cp git nmap sudo systemadmin vscode zsh-syntax-highlighting)
+plugins=(cp git nmap sudo systemadmin zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -32,3 +37,8 @@ fi
 
 source $HOME/zsh-hist/zsh-hist.plugin.zsh
 source $HOME/.aliases
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+bindkey -s ^f "tmux-sessionizer\n"
