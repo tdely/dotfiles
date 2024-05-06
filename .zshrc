@@ -1,8 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-path+=("/usr/local/bin")
 path+=("/usr/local/sbin")
-path+=("/sbin")
+path=("$HOME/.local/bin" $path)
 path=("$HOME/.nimble/bin" $path)
 export PATH
 
