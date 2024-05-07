@@ -53,3 +53,9 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 lsp_zero.setup()
+local opts = { winhighlight = 'Normal:Normal,FloatBorder:NormalBorder,CursorLine:Visual,Search:None' }
+cmp.setup({
+    window = { documentation = cmp.config.window.bordered(opts) },
+    view = { entries = {name = 'custom', selection_order = 'near_cursor' } },
+    completion = { completeopt = 'menu,menuone,noinsert' }
+})
