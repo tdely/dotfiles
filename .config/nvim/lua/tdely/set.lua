@@ -42,5 +42,6 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = '80'
 
 vim.g.mapleader = ' '
+vim.opt.timeoutlen = 500
 
 vim.cmd([[match ErrorMsg '\s\+$']])
