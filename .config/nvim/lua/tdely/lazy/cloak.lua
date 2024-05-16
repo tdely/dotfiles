@@ -23,5 +23,7 @@ return {
         },
       },
     })
+    vim.keymap.set('n', '<leader>ct', vim.cmd.CloakToggle)
+    vim.keymap.set('n', '<leader>cp', vim.cmd.CloakPreviewLine)
   end
 }
