@@ -24,7 +24,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(cp git nmap sudo systemadmin zsh-syntax-highlighting)
+plugins=(cp git nmap sudo systemadmin zsh-syntax-highlighting zsh-hist)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -34,7 +34,6 @@ else
   export EDITOR='nvim'
 fi
 
-source $HOME/zsh-hist/zsh-hist.plugin.zsh
 source $HOME/.aliases
 
 source /usr/share/fzf/key-bindings.zsh
