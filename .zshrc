@@ -1,4 +1,8 @@
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$XDG_DATA_HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
+export XDG_STATE_HOME="$HOME/.local/state"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
 path+=("/usr/local/sbin")
 path=("$HOME/.local/bin" $path)
@@ -28,6 +32,8 @@ plugins=(cp git nmap sudo systemadmin zsh-syntax-highlighting zsh-hist)
 
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
+# Must be put after sourcing oh-my-zsh.sh
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$HOST"
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
