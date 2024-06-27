@@ -32,20 +32,20 @@ order += "volume master"
 order += "tztime local"
 
 volume master {
-	format = " ♪ %volume "
+    format = " ♪ %volume "
     format_muted = " ♪ !(%volume) "
-	device = "default"
-	mixer = "Master"
-	mixer_idx = 0
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
 }
 
 load {
-	format = " Δ %1min′ %5min″ %15min‴ "
+    format = " Δ %1min′ %5min″ %15min‴ "
     max_threshold = 5
 }
 
 cpu_usage {
-	format = " 💮 %usage "
+    format = " 💮 %usage "
     format_above_degraded_threshold = " 🌸 %usage "
     format_above_threshold = " 🏵️ %usage "
     max_threshold = 95
@@ -53,52 +53,52 @@ cpu_usage {
 }
 
 cpu_temperature 0 {
-	format = " ❄️ %degrees°C "
-	format_above_threshold = " 🔥 %degrees°C "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
-	max_threshold = 75
+    format = " ❄️ %degrees°C "
+    format_above_threshold = " 🔥 %degrees°C "
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+    max_threshold = 75
 }
 
 cpu_temperature 1 {
-	format = " ❄️ %degrees°C "
-	format_above_threshold = " 🔥 %degrees°C "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp2_input"
-	max_threshold = 75
+    format = " ❄️ %degrees°C "
+    format_above_threshold = " 🔥 %degrees°C "
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp2_input"
+    max_threshold = 75
 }
 
 cpu_temperature 2 {
-	format = " ❄️ %degrees°C "
-	format_above_threshold = " 🔥 %degrees°C "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp3_input"
-	max_threshold = 75
+    format = " ❄️ %degrees°C "
+    format_above_threshold = " 🔥 %degrees°C "
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp3_input"
+    max_threshold = 75
 }
 
 cpu_temperature 3 {
-	format = " ❄️ %degrees°C "
-	format_above_threshold = " 🔥 %degrees°C "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp4_input"
-	max_threshold = 75
+    format = " ❄️ %degrees°C "
+    format_above_threshold = " 🔥 %degrees°C "
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp4_input"
+    max_threshold = 75
 }
 
 cpu_temperature 4 {
-	format = " ❄️ %degrees°C "
-	format_above_threshold = " 🔥 %degrees°C "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp5_input"
-	max_threshold = 75
+    format = " ❄️ %degrees°C "
+    format_above_threshold = " 🔥 %degrees°C "
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp5_input"
+    max_threshold = 75
 }
 
 cpu_temperature 5 {
-	format = " ❄️ %degrees°C "
-	format_above_threshold = " 🔥 %degrees°C "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp6_input"
-	max_threshold = 75
+    format = " ❄️ %degrees°C "
+    format_above_threshold = " 🔥 %degrees°C "
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp6_input"
+    max_threshold = 75
 }
 
 cpu_temperature 6 {
-	format = " ❄️ %degrees°C "
-	format_above_threshold = " 🔥 %degrees°C "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp7_input"
-	max_threshold = 75
+    format = " ❄️ %degrees°C "
+    format_above_threshold = " 🔥 %degrees°C "
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp7_input"
+    max_threshold = 75
 }
 
 wireless _first_ {
