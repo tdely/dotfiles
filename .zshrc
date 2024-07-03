@@ -1,6 +1,7 @@
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 export ZSH="$XDG_DATA_HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
-export XDG_STATE_HOME="$HOME/.local/state"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
 path+=("/usr/local/sbin")
