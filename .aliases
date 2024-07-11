@@ -5,9 +5,17 @@ alias \
   mv="mv -iv" \
   rm="rm -iv" \
   rmr="rm -Ivr" \
+  ls="ls --color" \
   lm="ls -t -l" \
   lt="ls --human-readable --size -l -S --classify" \
   mkd="mkdir -pv" \
+  mkdir="mkdir -pv" \
+  ping="ping -c 5" \
+  path="print -l $path" \
+  psmem="ps -e -orss=,args= | sort -b -k1 -nr" \
+  psmem10="ps -e -orss=,args= | sort -b -k1 -nr | head -n10" \
+  pscpu="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -k1 -nr" \
+  pscpu10="ps -e -o pcpu,cpu,nice,state,cputime,args | sort -k1 -nr | head -n10" \
   yt="yt-dlp --add-metadata -i" \
   yta="yt-dlp --audio-quality 0 -x --audio-format mp3" \
   camload="sudo modprobe v4l2loopback exclusive_caps=1 max_buffers=2" \
