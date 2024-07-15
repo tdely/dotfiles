@@ -11,8 +11,9 @@ path=("$HOME/.nimble/bin" $path)
 export PATH
 
 if [ -z "$LS_COLORS" ]; then
-    source "$XDG_CONFIG_HOME/dircolors"
-    export LS_COLORS
+    if (( $+commands[dircolors] )); then
+        source <(dircolors -b "$XDG_CONFIG_HOME/dircolors")
+    fi
 fi
 autoload -U colors
 colors
