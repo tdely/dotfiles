@@ -4,6 +4,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export ZSH_CACHE_DIR="$XDG_STATE_HOME/zsh/cache"
 export ZSH="$XDG_DATA_HOME/zsh"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
 
 path+=("/usr/local/sbin")
 path=("$HOME/.local/bin" $path)
@@ -21,6 +23,8 @@ colors
 setopt hist_ignore_space
 setopt no_case_glob
 setopt hist_no_store
+setopt hist_find_no_dups
+setopt hist_reduce_blanks
 setopt prompt_subst
 unsetopt menu_complete
 setopt auto_menu
