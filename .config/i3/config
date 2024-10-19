@@ -251,15 +251,13 @@ for_window [class="steam"] floating enable; border none
 for_window [class="steam" title="^Steam$"] floating disable
 
 # Gaps styling
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 1
 gaps inner 5
 gaps outer 2
 smart_gaps on
 smart_gaps inverse_outer
 
 exec --no-startup-id feh --no-fehbg --bg-scale /home/tdely/.config/i3/wallpaper.png
-
-exec_always --no-startup-id picom -bc
 
 exec xset dpms 0 0 120
 exec xset +dpms
