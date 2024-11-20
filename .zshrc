@@ -6,6 +6,7 @@ export ZSH="$XDG_DATA_HOME/zsh"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
+export MANPAGER='nvim +Man!'
 
 path+=("/usr/local/sbin")
 path=("$HOME/.local/bin" $path)
