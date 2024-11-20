@@ -12,4 +12,8 @@ read -p "Keyword search (empty to skip): " query
 
 [ -z $query ] || query=`echo "~$query" | tr ' ' '+'`
 
-tmux neww -n cht-sh sh -c "curl --silent cht.sh/$sel$query | less -R"
+if [ -z $TMUX ];then
+    curl --silent cht.sh/$sel$query | less -R
+else
+    tmux neww -n cht-sh sh -c "curl --silent cht.sh/$sel$query | less -R"
+fi
