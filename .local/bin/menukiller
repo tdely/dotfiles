@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+set -o errexit
+set -o pipefail
+set -o nounset
+
+case "$(printf "Kill\nPoweroff\nReboot"|rofi -i -dmenu)" in
+  Kill)
+    x="$(ps -u $USER --sort=-pid -o pid,comm | rofi -dmenu -i -p Kill)"
+    if [ "${x#*"PID COMMAND"}" == "$x" ]; then
+      echo "$x" | awk '{print $1}' | xargs -r kill
+      notify-send -a "Process killer" "Killed $x"
+    fi
+    ;;
+  Poweroff)
+    case "$(printf "No\nYes" | rofi -dmenu -i -p 'Shutdown?')" in
+      Yes) "$(dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop)" ;;
+      No) exit 0 ;;
+      *) exit 1 ;;
+    esac
+    ;;
+  Reboot)
+    case "$(printf "No\nYes" | rofi -dmenu -i -p 'Reboot?')" in
+      Yes) "$(dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart)" ;;
+      No) exit 0 ;;
+      *) exit 1 ;;
+    esac
+    ;;
+  *) exit 1 ;;
+esac
