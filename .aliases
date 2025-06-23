@@ -1,4 +1,5 @@
 alias \
+  sudo="sudo " \
   myip="curl ipinfo.io/ip" \
   ports="ss -tupan" \
   cp="cp -iv" \
