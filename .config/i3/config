@@ -42,6 +42,7 @@ bindsym $mod+Return exec konsole
 
 bindsym $mod+p exec --no-startup-id ~/.local/bin/menukiller
 bindsym $mod+o exec --no-startup-id ~/.local/bin/menuaudio
+bindsym $mod+c exec --no-startup-id ~/.local/bin/bccalc
 bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
 
