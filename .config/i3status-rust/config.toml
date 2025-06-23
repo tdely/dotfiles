@@ -1,0 +1,85 @@
+[theme]
+theme = "srcery"
+[theme.overrides]
+idle_bg = "#2a2e32"
+info_bg = "#2a2e32"
+good_bg = "#2a2e32"
+warning_bg = "#2a2e32"
+critical_bg = "#2a2e32"
+separator = "  "
+good_fg = "#709080"
+warn_fg = "#dfaf8f"
+critical_fg = "#dc6f6f"
+
+
+[icons]
+icons = "material-nf"
+[icons.overrides]
+cpu = ["💮", "🌸", "🌼", "🏵️"]
+
+[[block]]
+block = "cpu"
+info_cpu = 10
+warning_cpu = 75
+critical_cpu = 95
+
+[[block]]
+block = "load"
+format = " Δ $1m.eng(w:4)′ $5m.eng(w:4)″ $15m.eng(w:4)‴ "
+
+[[block]]
+block = "temperature"
+format = " $icon $average"
+format_alt = " $icon $average $max"
+interval = 10
+good = 25
+idle = 45
+info = 55
+warning = 75
+chip = "coretemp-isa-0000"
+
+[[block]]
+block = "net"
+device = "br0"
+format = " $icon  $ip "
+
+[[block]]
+block = "memory"
+format = " 💫 $mem_used.eng(w:2,prefix:Gi,force_prefix:true) ($mem_used_percents.eng(w:2)) "
+
+[[block]]
+block = "nvidia_gpu"
+format = " ☄️ ⸢$utilization.eng(w:2) ‣ $temperature.eng(w:2) ‣ $power.eng(w:3) ‣ $memory.eng(w:3,prefix:M)  $fan_speed.eng(w:2)⸥ "
+[block.theme_overrides]
+good_fg = "#FCE8C3"
+info_fg = "#dfaf8f"
+warning_fg = "#dc6f6f"
+
+[[block]]
+block = "tea_timer"
+format = " $icon {$time | 0m 0s }"
+increment = 10
+#done_cmd = "notify-send 'Timer finished!'"
+done_cmd = "rofi -e 'Timer finished!'"
+
+# [[block]]
+# block = "pomodoro"
+# format = " $icon {$message|Pomodoro timer not set  }"
+# message = "Work over! Take a break!"
+# break_message = "Break over! Get to work!"
+# notify_cmd = "notify-send '{msg}'"
+# blocking_cmd = false
+# [block.icons_overrides]
+# pomodoro = "I"
+
+[[block]]
+block = "sound"
+format = "$icon [$output_name]{ $volume|}"
+[block.mappings]
+"alsa_output.pci-0000_00_1f.3.analog-stereo" = "S"
+"alsa_output.usb-fifine_Microphones_fifine_Microphone_REV1.0-00.analog-stereo" = "H"
+
+[[block]]
+block = "time"
+interval = 60
+format = " $icon  $timestamp.datetime()"
