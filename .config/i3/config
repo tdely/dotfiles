@@ -52,7 +52,7 @@ bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec "rofi -modi drun,run -show drun"
+bindsym $mod+d exec "rofi -matching fuzzy -drun-match-fields name,generic -modi drun,run -show drun"
 
 # change focus
 bindsym $mod+$left focus left
