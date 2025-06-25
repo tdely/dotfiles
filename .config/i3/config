@@ -268,8 +268,8 @@ smart_gaps inverse_outer
 
 exec --no-startup-id feh --no-fehbg --bg-scale /home/tdely/.config/i3/wallpaper.png
 
-exec xset dpms 0 0 120
-exec xset +dpms
+exec --no-startup-id xset dpms 0 0 120
+exec --no-startup-id xset +dpms
 exec --no-startup-id redshift -l 60.60357:15.62597
 exec keepassxc
 exec steam
