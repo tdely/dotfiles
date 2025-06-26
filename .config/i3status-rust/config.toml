@@ -69,6 +69,17 @@ format = "$icon [$output_name]{ $volume|}"
 "alsa_output.usb-fifine_Microphones_fifine_Microphone_REV1.0-00.analog-stereo" = "H"
 
 [[block]]
+block = "toggle"
+format = "$icon DPMS"
+command_on = "xset +dpms && xset s on"
+command_off = "xset -dpms && xset s of"
+command_state = "xset q | grep Enabled"
+
+[[block]]
 block = "time"
 interval = 60
 format = "$icon $timestamp.datetime() "
+
+[[block.click]]
+button = "left"
+cmd = "notify-send -a Calendar \"$(cal -m)\""
