@@ -19,18 +19,19 @@ cpu = ["💮", "🌸", "🌼", "🏵️"]
 
 [[block]]
 block = "cpu"
+format = "$icon $utilization"
 info_cpu = 10
 warning_cpu = 75
 critical_cpu = 95
 
 [[block]]
 block = "load"
-format = " Δ $1m.eng(w:4)′ $5m.eng(w:4)″ $15m.eng(w:4)‴ "
+format = "Δ $1m.eng(w:4)′ $5m.eng(w:4)″ $15m.eng(w:4)‴"
 
 [[block]]
 block = "temperature"
-format = " $icon $average"
-format_alt = " $icon $average $max"
+format = "$icon $average"
+format_alt = "$icon $average $max"
 interval = 10
 good = 25
 idle = 45
@@ -41,15 +42,15 @@ chip = "coretemp-isa-0000"
 [[block]]
 block = "net"
 device = "br0"
-format = " $icon  $ip "
+format = "$icon $ip"
 
 [[block]]
 block = "memory"
-format = " 💫 $mem_used.eng(w:2,prefix:Gi,force_prefix:true) ($mem_used_percents.eng(w:2)) "
+format = "💫 $mem_used.eng(w:2,prefix:Gi,force_prefix:true) ($mem_used_percents.eng(w:2))"
 
 [[block]]
 block = "nvidia_gpu"
-format = " ☄️ ⸢$utilization.eng(w:2) ‣ $temperature.eng(w:2) ‣ $power.eng(w:3) ‣ $memory.eng(w:3,prefix:M)  $fan_speed.eng(w:2)⸥ "
+format = "☄️ ⸢$utilization.eng(w:2) ‣ $temperature.eng(w:2) ‣ $power.eng(w:3) ‣ $memory.eng(w:3,prefix:M)  $fan_speed.eng(w:2)⸥"
 [block.theme_overrides]
 good_fg = "#FCE8C3"
 info_fg = "#dfaf8f"
@@ -57,7 +58,7 @@ warning_fg = "#dc6f6f"
 
 [[block]]
 block = "tea_timer"
-format = " $icon {$time | 0m 0s }"
+format = "$icon {$time | 0m 0s}"
 increment = 10
 #done_cmd = "notify-send 'Timer finished!'"
 done_cmd = "rofi -e 'Timer finished!'"
@@ -82,4 +83,4 @@ format = "$icon [$output_name]{ $volume|}"
 [[block]]
 block = "time"
 interval = 60
-format = " $icon  $timestamp.datetime()"
+format = "$icon $timestamp.datetime() "
