@@ -72,7 +72,7 @@ format = "$icon [$output_name]{ $volume|}"
 block = "toggle"
 format = "$icon DPMS"
 command_on = "xset +dpms && xset s on"
-command_off = "xset -dpms && xset s of"
+command_off = "xset -dpms && xset s off"
 command_state = "xset q | grep Enabled"
 
 [[block]]
