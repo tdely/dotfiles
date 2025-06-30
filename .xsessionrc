@@ -1,2 +1,5 @@
+export XDG_CONFIG_DIRS="$HOME/.config/kdedefaults:/etc/xdg"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CURRENT_DESKTOP=KDE
 setxkbmap -layout us,se
 setxkbmap -option 'grp:alt_shift_toggle'
