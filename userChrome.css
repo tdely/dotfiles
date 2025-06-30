@@ -1,0 +1,26 @@
+/*** Hide tab close buttons ***/
+.tabbrowser-tab .tab-close-button {
+  visibility: collapse !important;
+}
+
+/*** Waste less space on tabs ***/
+:root {
+  --tab-max-height: 24px !important;
+  --tab-min-height: 0 !important;
+  --tab-border-radius: 0 !important;
+}
+.tab-content,
+.tab-background,
+.tab-label-container {
+  height: var(--tab-max-height);
+}
+.tab-background {
+  margin: 0 !important;
+}
+.tab-secondary-label {
+  font-size: .5em !important;
+  margin: -.6em 0 .5em !important;
+}
+.titlebar-spacer[type="pre-tabs"] {
+  display: none !important
+}
