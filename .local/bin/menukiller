@@ -12,14 +12,14 @@ case "$(printf "Kill\nPoweroff\nReboot"|rofi -i -matching fuzzy -dmenu -l 3)" in
     fi
     ;;
   Poweroff)
-    case "$(printf "No\nYes" | rofi -dmenu -i -p 'Shutdown?')" in
+    case "$(printf "No\nYes" | rofi -dmenu -i -l 2 -p 'Shutdown?')" in
       Yes) "$(dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop)" ;;
       No) exit 0 ;;
       *) exit 1 ;;
     esac
     ;;
   Reboot)
-    case "$(printf "No\nYes" | rofi -dmenu -i -p 'Reboot?')" in
+    case "$(printf "No\nYes" | rofi -dmenu -i -l 2 -p 'Reboot?')" in
       Yes) "$(dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart)" ;;
       No) exit 0 ;;
       *) exit 1 ;;
