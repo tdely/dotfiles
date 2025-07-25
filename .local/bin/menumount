@@ -1,0 +1,77 @@
+#!/usr/bin/env sh
+set -o errexit
+set -o pipefail
+set -o nounset
+
+pango_label() {
+  printf "<span weight=\"light\" style=\"italic\">&lt;$1&gt;</span>"
+}
+
+pango_makemodel() {
+  printf "<span weight=\"light\" style=\"italic\">($1)</span>"
+}
+
+devices=""
+for device in /sys/block/*; do
+  info=$(udevadm info --query property --path $device)
+  if [ -n "$(printf "$info" | grep ^ID_BUS=usb)" ]; then
+    devname="$(printf "$info" | grep ^DEVNAME= | cut -b 9-)"
+    model="$(printf "$info" | grep ^ID_MODEL_ENC= | cut -b 14-)"
+    vendor="$(printf "$info" | grep ^ID_VENDOR_ENC= | cut -b 15-)"
+    for part in ${devname}[0-9]*
+    do
+      partinfo=$(udisksctl info -b "$part")
+      mounted=$(printf "$partinfo" | grep MountPoints: | awk '{print $2}')
+      label=$(printf "$partinfo" | grep IdLabel: | awk '{print $2}')
+      if [ -n "$mounted" ]; then
+        out="$part [$mounted]"
+      else
+        out="$part"
+      fi
+      if [ -n "$label" ]; then
+        out="$out $(pango_label "$label")"
+      fi
+      devices="$devices\n$out $(pango_makemodel "${vendor%"${vendor##*[![:space:]]}"} ${model%"${model##*[![:space:]]}"}")"
+    done
+  fi
+done
+
+n=$(printf "${devices}" | wc -l)
+choice="$(printf "${devices:2}" | rofi -dmenu -i -l $n -matching fuzzy -markup-rows -format p -p 'USB device')"
+
+dev="$(printf "$choice"|awk '{print $1}')"
+mountpoint="$([[ "$choice" =~ \[[^]]*\] ]] && printf "${BASH_REMATCH[0]#/#}" || printf "")"
+label="$([[ "$choice" =~ \<([^\>]*)\> ]] && printf "${BASH_REMATCH[1]#/#}" || printf "")"
+mm="$([[ "$choice" =~ \(([^\)]*)\) ]] && printf "${BASH_REMATCH[1]#/#}" || printf "")"
+
+if [ -n "$mountpoint" ]; then
+  msg="└─ $mountpoint"
+  if [ -n "$label" ]; then
+    msg="$msg $(pango_label "$label")"
+  fi
+  msg="$msg $(pango_makemodel "$mm")"
+
+  case "$(printf "Unmount\nAbort"|rofi -modi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
+    Unmount)
+      out=$(udisksctl unmount -b "$dev")
+      notify-send -a "USB mounter" "$out"
+      ;;
+    Abort) exit 0 ;;
+    *) exit 1 ;;
+  esac
+else
+  msg="└─"
+  if [ -n "$label" ]; then
+    msg="$msg $(pango_label "$label")"
+  fi
+  msg="$msg $(pango_makemodel "$mm")"
+
+  case "$(printf "Mount\nAbort"|rofi -modi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
+    Mount)
+      out=$(udisksctl mount -b "$dev")
+      notify-send -a "USB mounter" "$out"
+      ;;
+    Abort) exit 0 ;;
+    *) exit 1 ;;
+  esac
+fi
