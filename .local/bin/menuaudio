@@ -3,7 +3,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-case "$(printf "Headphones\nSpeakers"|rofi -modi -i -dmenu -matching fuzzy -l 2 -p Audio)" in
+case "$(printf "Headphones\nSpeakers"|rofi -dmenu -i -l 2 -matching fuzzy -p Audio)" in
   Headphones)
     pactl set-default-sink "alsa_output.usb-fifine_Microphones_fifine_Microphone_REV1.0-00.analog-stereo"
 	notify-send -a "Audio switcher" "Audio switched to headphones"

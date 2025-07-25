@@ -3,7 +3,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-case "$(printf "Kill\nPoweroff\nReboot"|rofi -i -matching fuzzy -dmenu -l 3)" in
+case "$(printf "Kill\nPoweroff\nReboot"|rofi -dmenu -i -l 3 -matching fuzzy)" in
   Kill)
     x="$(ps -u $USER --sort=-pid -o pid,comm | rofi -dmenu -i -matching fuzzy -p Kill)"
     if [ "${x#*"PID COMMAND"}" == "$x" ]; then

@@ -51,7 +51,7 @@ if [ -n "$mountpoint" ]; then
   fi
   msg="$msg $(pango_makemodel "$mm")"
 
-  case "$(printf "Unmount\nAbort"|rofi -modi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
+  case "$(printf "Unmount\nAbort"|rofi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
     Unmount)
       out=$(udisksctl unmount -b "$dev")
       notify-send -a "USB mounter" "$out"
@@ -66,7 +66,7 @@ else
   fi
   msg="$msg $(pango_makemodel "$mm")"
 
-  case "$(printf "Mount\nAbort"|rofi -modi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
+  case "$(printf "Mount\nAbort"|rofi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
     Mount)
       out=$(udisksctl mount -b "$dev")
       notify-send -a "USB mounter" "$out"
