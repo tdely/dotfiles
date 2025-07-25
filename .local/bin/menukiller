@@ -3,13 +3,20 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-case "$(printf "Kill\nPoweroff\nReboot"|rofi -dmenu -i -l 3 -matching fuzzy)" in
+case "$(printf "Kill\nLogout\nPoweroff\nReboot"|rofi -dmenu -i -l 4 -matching fuzzy)" in
   Kill)
     x="$(ps -u $USER --sort=-pid -o pid,comm | rofi -dmenu -i -matching fuzzy -p Kill)"
     if [ "${x#*"PID COMMAND"}" == "$x" ]; then
       echo "$x" | awk '{print $1}' | xargs -r kill
       notify-send -a "Process killer" "Killed $x"
     fi
+    ;;
+  Logout)
+    case "$(printf "No\nYes" | rofi -dmenu -i -l 2 -p 'Logout?')" in
+      Yes) "$(i3-msg exit)" ;;
+      No) exit 0 ;;
+      *) exit 1 ;;
+    esac
     ;;
   Poweroff)
     case "$(printf "No\nYes" | rofi -dmenu -i -l 2 -p 'Shutdown?')" in
