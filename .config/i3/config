@@ -125,13 +125,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# assign workspaces to screens
-workspace $ws1 output DP-4
-workspace $ws3 output DP-4
-workspace $ws5 output DP-4
-workspace $ws2 output DP-2
-workspace $ws4 output DP-2
-
 # switch to workspace
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+1 workspace number $ws1
@@ -227,7 +220,6 @@ bar {
   # font pango: termsyn 12 # KDE
   font pango: Hack 12
   tray_output primary
-  # output DP-4
 }
 
 # Plasma compatibility improvements
@@ -268,11 +260,9 @@ smart_gaps on
 smart_gaps inverse_outer
 
 exec --no-startup-id feh --no-fehbg --bg-scale /home/tdely/.config/i3/wallpaper.png
-exec --no-startup-id XDG_MENU_PREFIX=plasma- kbuildsycoca6
 
 exec --no-startup-id xset dpms 0 0 120
 exec --no-startup-id xset +dpms
 exec --no-startup-id dunst
 exec --no-startup-id redshift -l 60.60357:15.62597
 exec keepassxc
-exec steam
