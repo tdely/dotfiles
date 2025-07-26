@@ -3,3 +3,4 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export QT_QPA_PLATFORMTHEME=qt6ct
 setxkbmap -layout us,se
 setxkbmap -option 'grp:alt_shift_toggle'
+66 tree start noise-gate
