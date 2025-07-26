@@ -48,6 +48,7 @@ bindsym $mod+m exec --no-startup-id ~/.local/bin/menumount
 bindsym $mod+c exec --no-startup-id ~/.local/bin/bccalc
 bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
+bindsym Ctrl+Shift+l exec --no-startup-id ~/.local/bin/lock.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
