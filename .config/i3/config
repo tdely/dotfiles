@@ -272,6 +272,7 @@ exec --no-startup-id XDG_MENU_PREFIX=plasma- kbuildsycoca6
 
 exec --no-startup-id xset dpms 0 0 120
 exec --no-startup-id xset +dpms
+exec --no-startup-id /home/tdely/.local/elock.sh
 exec --no-startup-id dunst
 exec --no-startup-id redshift -l 60.60357:15.62597
 exec keepassxc
