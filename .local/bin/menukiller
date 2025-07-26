@@ -5,10 +5,10 @@ set -o nounset
 
 case "$(printf "Kill\nLogout\nPoweroff\nReboot"|rofi -dmenu -i -l 4 -matching fuzzy)" in
   Kill)
-    x="$(ps -u $USER --sort=-pid -o pid,comm | rofi -dmenu -i -matching fuzzy -p Kill)"
+    x="$(ps -u $USER --sort=-pid -o pid,comm,cmd | rofi -dmenu -i -matching fuzzy -p Kill)"
     if [ "${x#*"PID COMMAND"}" == "$x" ]; then
       echo "$x" | awk '{print $1}' | xargs -r kill
-      notify-send -a "Process killer" "Killed $x"
+      notify-send -a "Process killer" "Killed $(echo $x | awk '{print $1 " " $2}')"
     fi
     ;;
   Logout)
