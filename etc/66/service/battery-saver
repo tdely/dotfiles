@@ -1,0 +1,11 @@
+[Main]
+Type = oneshot
+Version = 0.1.0
+Description = "Battery saver"
+User = ( root )
+
+[Start]
+Execute = ( /usr/local/sbin/battery-saver start )
+
+[Stop]
+Execute = ( /usr/local/sbin/battery-saver stop )
