@@ -24,6 +24,5 @@ alias \
   fixkeymap="setxkbmap -layout us,se -option 'grp:alt_shift_toggle'" \
   capsoff="setxkbmap -option caps:none" \
   capson="setxkbmap -option caps:capslock" \
-  unlock="dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Session2 org.freedesktop.ConsoleKit.Session.Unlock" \
   pwroff="dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop" \
   restart="dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart"
