@@ -1,0 +1,69 @@
+[[mgr.prepend_keymap]]
+on   = "T"
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "T"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
+
+[[mgr.prepend_keymap]]
+on = ">"
+run = "seek 5"
+desc = "Seek 5 units down in the preview"
+
+[[mgr.prepend_keymap]]
+on = "<"
+run = "seek -5"
+desc = "Seek 5 units up in the preview"
+
+[[mgr.prepend_keymap]]
+on  = "J"
+run = "plugin parent-arrow 1"
+desc = "Navigate down in the parent directory without changing focus"
+
+[[mgr.prepend_keymap]]
+on  = "K"
+run = "plugin parent-arrow -1"
+desc = "Navigate up in the parent directory without changing focus"
+
+[[mgr.prepend_keymap]]
+on   = "<Backspace>"
+run  = "leave"
+desc = "Back to the parent directory"
+
+[[mgr.prepend_keymap]]
+on   = "o"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = "p"
+run  = "plugin smart-paste"
+desc = "Paste into the hovered directory or CWD"
+
+[[mgr.prepend_keymap]]
+on   = ["g", "o"]
+run  = "cd ~/Documents"
+desc = "Go ~/Documents"
+
+[[mgr.prepend_keymap]]
+on   = ["g", "p"]
+run  = "cd ~/Pictures"
+desc = "Go ~/Pictures"
+
+[[mgr.prepend_keymap]]
+on   = ["g", "s"]
+run  = "cd ~/Pictures/Screenshots"
+desc = "Go ~/Pictures/Screenshots"
+
+[[mgr.prepend_keymap]]
+on   = ["g", "m"]
+run  = "cd ~/Music"
+desc = "Go ~/Music"

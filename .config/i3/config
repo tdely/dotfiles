@@ -40,7 +40,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec konsole
-bindsym $mod+e exec dolphin
+bindsym $mod+e exec konsole -e yazi
 
 bindsym $mod+p exec --no-startup-id ~/.local/bin/menukiller
 bindsym $mod+o exec --no-startup-id ~/.local/bin/menuaudio

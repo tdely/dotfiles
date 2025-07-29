@@ -1,0 +1,240 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# : Manager {{{
+
+[mgr]
+cwd = { fg = "#ccdc90" }
+
+# Hovered
+hovered         = { reversed = true }
+preview_hovered = { underline = true }
+
+# Find
+find_keyword  = { bold = true, italic = true, underline = true }
+find_position = { bold = true, italic = true }
+
+# Symlink
+#symlink_target = { italic = true }
+
+# Marker
+marker_copied   = { fg = "green",  bg = "green" }
+marker_cut      = { fg = "red",    bg = "red" }
+marker_marked   = { fg = "cyan",   bg = "cyan" }
+marker_selected = { fg = "yellow", bg = "yellow" }
+
+# Count
+count_copied   = { fg = "black", bg = "green" }
+count_cut      = { fg = "black", bg = "red" }
+count_selected = { fg = "black", bg = "yellow" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#f0dfaf" }
+
+# Syntax highlighting
+# https://github.com/jonathonw/st-zenburn/blob/master/st-zenburn.tmTheme
+syntect_theme = ".config/st-zenburn.tmTheme"
+
+# : }}}
+
+
+# : Tabs {{{
+
+[tabs]
+active   = { bg = "#f0dfaf", fg = "black", bold = true }
+inactive = { bg = "reset", fg = "#f0dfaf" }
+
+# Separator
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+# : }}}
+
+
+# : Mode {{{
+
+[mode]
+normal_main = { bg = "#f0dfaf", fg = "black", bold = true }
+normal_alt  = { bg = "reset", fg = "#f0dfaf" }
+
+# Select mode
+select_main = { bg = "red", fg = "black", bold = true }
+select_alt  = { bg = "reset", fg = "red" }
+
+# Unset mode
+unset_main = { bg = "red", fg = "black", bold = true }
+unset_alt  = { bg = "reset", fg = "red" }
+
+# : }}}
+
+
+# : Status bar {{{
+
+[status]
+overall   = { fg = "#f0dfaf" }
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions
+perm_sep   = { fg = "#f0dfaf" }
+perm_type  = { fg = "#f0dfaf" }
+perm_read  = { fg = "#f0dfaf" }
+perm_write = { fg = "#f0dfaf" }
+perm_exec  = { fg = "#f0dfaf" }
+
+# Progress
+progress_label  = { bold = true }
+progress_normal = { fg = "#ccdc90", bg = "black" }
+progress_error  = { fg = "red", bg = "black" }
+
+# : }}}
+
+
+# : Which {{{
+
+[which]
+cols            = 3
+mask            = { bg = "black" }
+cand            = { fg = "green" }
+rest            = { fg = "darkgray" }
+desc            = { fg = "lightmagenta" }
+separator       = "  "
+separator_style = { fg = "#f0dfaf" }
+
+# : }}}
+
+
+# : Confirmation {{{
+
+[confirm]
+border     = { fg = "#ccdc90" }
+title      = { fg = "#ccdc90" }
+content    = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = [ "  [y]es  ", "  [n]o  " ]
+
+# : }}}
+
+
+# : Spotter {{{
+
+[spot]
+border = { fg = "#ccdc90" }
+title  = { fg = "#ccdc90" }
+
+# Table
+tbl_col  = { fg = "#ccdc90" }
+tbl_cell = { fg = "#ccdc90", reversed = true }
+
+# : }}}
+
+
+# : Notification {{{
+
+[notify]
+title_info  = { fg = "green" }
+title_warn  = { fg = "yellow" }
+title_error = { fg = "red" }
+
+# Icons
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+# : }}}
+
+
+# : Picker {{{
+
+[pick]
+border   = { fg = "#ccdc90" }
+active   = { fg = "magenta", bold = true }
+inactive = {}
+
+# : }}}
+
+
+# : Input {{{
+
+[input]
+border   = { fg = "#ccdc90" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+# : }}}
+
+
+# : Completion {{{
+
+[cmp]
+border   = { fg = "#ccdc90" }
+active   = { reversed = true }
+inactive = {}
+
+# Icons
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+# : }}}
+
+
+# : Task manager {{{
+
+[tasks]
+border  = { fg = "#ccdc90" }
+title   = {}
+hovered = { fg = "magenta", underline = true }
+
+# : }}}
+
+
+# : Help menu {{{
+
+[help]
+on      = { fg = "cyan" }
+run     = { fg = "magenta" }
+desc    = {}
+hovered = { reversed = true, bold = true }
+footer  = { fg = "black", bg = "white" }
+
+# : }}}
+
+
+# : File-specific styles {{{
+
+[filetype]
+rules = [
+	{ mime = "inode/directory", fg = "#ffd7af" },
+	# Images
+	{ mime = "image/*", fg = "lightblue" },
+
+	# Media
+	{ mime = "{audio,video}/*", fg = "magenta" },
+
+	# Archives
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "red" },
+
+	# Documents
+	{ mime = "application/{pdf,doc,rtf}", fg = "cyan" },
+
+	# Empty files
+	# { mime = "inode/empty", fg = "red" },
+
+	# Special files
+	{ name = "*", is = "orphan", bg = "red" },
+	{ name = "*", is = "exec"  , fg = "green" },
+
+	# Dummy files
+	{ name = "*", is = "dummy", bg = "red" },
+	{ name = "*/", is = "dummy", bg = "red" },
+
+	# Fallback
+	# { name = "*", fg = "white" },
+	{ name = "*/", fg = "blue" }
+]
+
+# : }}}
