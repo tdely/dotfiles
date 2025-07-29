@@ -1,0 +1,8 @@
+[Main]
+Type = classic
+Version = 0.1.0
+Description = "Syncthing"
+User = ( user )
+
+[Start]
+Execute = ( /usr/bin/syncthing )

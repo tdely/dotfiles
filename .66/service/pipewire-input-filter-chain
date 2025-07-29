@@ -1,0 +1,8 @@
+[Main]
+Type = classic
+Version = 0.1.0
+Description = "Pipewire input filter chain"
+User = ( user )
+
+[Start]
+Execute = ( /usr/bin/pipewire -c /home/tdely/.config/pipewire/input-filter-chain.conf )
