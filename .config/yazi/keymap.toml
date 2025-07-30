@@ -67,3 +67,13 @@ desc = "Go ~/Pictures/Screenshots"
 on   = ["g", "m"]
 run  = "cd ~/Music"
 desc = "Go ~/Music"
+
+[[mgr.prepend_keymap]]
+on = ["c", "p"]
+run = 'copy path'
+desc = "Copy the file path"
+
+[[mgr.prepend_keymap]]
+on = ["c", "c"]
+run = 'shell -- xclip -selection clipboard -t "$(file -b --mime-type "$@")" -i "$@"'
+desc = "Copy file to clipboard"
