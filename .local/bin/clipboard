@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+set -o errexit
+set -o pipefail
+set -o nounset
+
+hist="$XDG_DATA_HOME/clipboard.history"
+max=10
+
+touch "$hist"
+
+if [ ${1:-""} = "-daemon" ]; then
+  while $(clipnotify -s clipboard); do
+    nontext=$(xclip -selection clipboard -t TARGETS -o | grep -c -E '^(image|application|video|audio)' || : )
+    if [ $nontext -eq 0 ]; then
+      clip="$(xclip -o -selection clipboard)"
+      clip="${clip//$'\n'/\\n}"
+      last=$(tail -n1 "$hist")
+      if [ "$last" != "$clip" ]; then
+        if [ -n "$clip" ]; then
+          echo "$clip" >> "$hist" && echo "$(tail -n10 "$hist")" > "$hist"
+        fi
+      fi
+    fi
+  done;
+elif [ ${1:-""} = "-clear" ]; then
+  truncate -s0 "$hist"
+else
+  choice=$(tac "$hist" | nl -ba -w1 -s' ' | rofi -dmenu -i -l $(wc -l "$hist") -p " ")
+  if [ -n "$choice" ]; then
+    ln=$(echo "$choice" | cut -f1 -d' ')
+    clip=$(echo "$choice" | cut -f2- -d' ')
+    case $(printf 'Copy\nRemove' | rofi -dmenu -i -l 2 -p " " -mesg "└─ $(echo $clip | cut -b1-90)") in
+      Copy)
+        tmp="$(tac "$hist" | sed "${ln}d")"
+        echo "$tmp" | tac > "$hist"
+        echo -e "$clip" | xclip -selection "clipboard" -rmlastnl
+        ;;
+      Remove)
+        tmp="$(tac "$hist" | sed "${ln}d")"
+        echo "$tmp" | tac > "$hist"
+        ;;
+      Cancel) exit 0 ;;
+    esac
+  fi
+fi
