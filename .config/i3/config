@@ -158,7 +158,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-#bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -261,11 +260,11 @@ gaps outer 2
 smart_gaps on
 smart_gaps inverse_outer
 
-exec --no-startup-id feh --no-fehbg --bg-scale /home/tdely/.config/i3/wallpaper.png
+exec --no-startup-id feh --no-fehbg --bg-scale ~/.config/i3/wallpaper.png
 
 exec --no-startup-id xset dpms 0 0 120
 exec --no-startup-id xset +dpms
-exec --no-startup-id /home/tdely/.local/elock.sh
+exec --no-startup-id ~/.local/elock.sh
 exec --no-startup-id ~/.local/bin/clipboard -daemon
 exec --no-startup-id dunst
 exec --no-startup-id redshift -l 60.60357:15.62597
