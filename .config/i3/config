@@ -46,6 +46,7 @@ bindsym $mod+p exec --no-startup-id ~/.local/bin/menukiller
 bindsym $mod+o exec --no-startup-id ~/.local/bin/menuaudio
 bindsym $mod+m exec --no-startup-id ~/.local/bin/menumount
 bindsym $mod+c exec --no-startup-id ~/.local/bin/bccalc
+bindsym $mod+Shift+p exec --no-startup-id ~/.local/bin/clipboard
 bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym Ctrl+Shift+l exec --no-startup-id ~/.local/bin/lock.sh
@@ -265,6 +266,7 @@ exec --no-startup-id feh --no-fehbg --bg-scale /home/tdely/.config/i3/wallpaper.
 exec --no-startup-id xset dpms 0 0 120
 exec --no-startup-id xset +dpms
 exec --no-startup-id /home/tdely/.local/elock.sh
+exec --no-startup-id ~/.local/bin/clipboard -daemon
 exec --no-startup-id dunst
 exec --no-startup-id redshift -l 60.60357:15.62597
 exec keepassxc
