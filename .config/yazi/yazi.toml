@@ -1,0 +1,53 @@
+[opener]
+edit = [
+  { run = 'nvim "$@"', block = false, for = "unix" },
+]
+
+slice_fdm = [
+  { run = 'orca-slicer "$@"', block = false, for = "unix", desc = "Slice for FDM print" },
+]
+
+slice_resin = [
+  { run = 'chitubox "$@"', block = false, for = "unix", desc = "Slice for resin print" },
+]
+
+view_model = [
+  { run = 'glc_player "$@"', block = false, for = "unix", desc = "View 3D model" },
+]
+
+freecad = [
+  { run = 'freecad "$@"', block = false, for = "unix", desc = "Edit in FreeCAD" },
+]
+
+document_view = [
+  { run = 'okular "$@"', block = false, for = "unix", desc = "View in Okular" },
+]
+
+[open]
+prepend_rules = [
+  { name = "*.3mf", use = ["slice_fdm", "slice_resin"] },
+  { name = "*.obj", use = ["slice_fdm", "slice_resin"] },
+  { name = "*.gcode", use = "slice_fdm" },
+  { name = "*.step", use = "slice_fdm" },
+  { name = "*.ctb", use = "slice_resin" },
+  { name = "*.ctp", use = "slice_resin" },
+  { name = "*.chitubox", use = "slice_resin" },
+
+  { name = "*.stl", use = ["view_model", "slice_fdm", "slice_resin"] },
+  { name = "*.dae", use = "view_model" },
+  { name = "*.off", use = "view_model" },
+  { name = "*.coff", use = "view_model" },
+  { name = "*.3dxml", use = "view_model" },
+  { name = "*.3ds", use = "view_model" },
+
+  { name = "*.FCStd", use = "freecad" },
+
+  { mime = "application/pdf", use = "document_view" },
+  { mime = "application/postscript", use = "document_view" },
+  { mime = "application/xps", use = "document_view" },
+  { mime = "application/epub+zip", use = "document_view" },
+  { mime = "application/x-mobipocket-ebook", use = "document_view" },
+  { name = "*.cbr", use = "document_view" },
+  { name = "*.djvu", use = "document_view" },
+  { name = "*.djv", use = "document_view" },
+]
