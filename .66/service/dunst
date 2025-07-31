@@ -1,0 +1,8 @@
+[Main]
+Type = classic
+Version = 0.1.0
+Description = "Lightweight and customizable notification daemon"
+User = ( user )
+
+[Start]
+Execute = ( /usr/bin/dunst )

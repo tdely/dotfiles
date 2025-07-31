@@ -1,0 +1,8 @@
+[Main]
+Type = classic
+Version = 0.1.0
+Description = "Redshift display color temperature adjustment"
+User = ( user )
+
+[Start]
+Execute = ( /usr/bin/redshift )

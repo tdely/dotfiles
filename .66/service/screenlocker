@@ -1,0 +1,11 @@
+[Main]
+Type = classic
+Version = 0.1.0
+Description = "Screen locker"
+User = ( user )
+
+[Start]
+Build = custom
+Execute = (#!/usr/bin/env sh
+xss-lock -n /usr/lib/xsecurelock/dimmer -- /home/${USER}/.local/bin/lock.sh
+)
