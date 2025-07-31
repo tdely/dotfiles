@@ -1,0 +1,11 @@
+[Main]
+Type = classic
+Version = 0.1.0
+Description = "Tiny clipboard manager"
+User = ( user )
+
+[Start]
+Build = custom
+Execute = (#!/usr/bin/env sh
+/home/${USER}/.local/bin/clipboard -daemon
+)
