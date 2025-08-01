@@ -129,6 +129,21 @@ bindkey -M emacs '^[[1;5D' backward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
 
+function tomb () {
+  case $1 in
+    open)
+      sudo /usr/bin/mkdir -m 0755 /run/media
+      sudo tomb $@
+      ;;
+    close|slam)
+      sudo tomb $@
+      ;;
+    *)
+      tomb $@
+      ;;
+  esac
+}
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
