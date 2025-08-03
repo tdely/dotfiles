@@ -24,5 +24,7 @@ alias \
   fixkeymap="setxkbmap -layout us,se -option 'grp:alt_shift_toggle'" \
   capsoff="setxkbmap -option caps:none" \
   capson="setxkbmap -option caps:capslock" \
+  aurup="pacopts aur -u | tail -n+2 | sed 's/:: //' | fzf --preview='pacopts aur -i {1}' --preview-window=up | awk '{print \$1}' | xargs -ro pacopts aur -U" \
+  orphdel="pacman -Qdtq | fzf --preview='pacman -Qi {1}' --preview-window=up | awk '{print \$1}' | xargs -ro sudo pacman -Rns" \
   pwroff="dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop" \
   restart="dbus-send --system --print-reply --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart"
