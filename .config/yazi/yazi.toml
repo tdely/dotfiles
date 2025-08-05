@@ -1,26 +1,26 @@
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = false, for = "unix" },
+  { run = 'nvim "$@"', block = false, orphan = true, for = "unix" },
 ]
 
 slice_fdm = [
-  { run = 'orca-slicer "$@"', block = false, for = "unix", desc = "Slice for FDM print" },
+  { run = 'orca-slicer "$@"', block = false, orphan = true, for = "unix", desc = "Slice for FDM print" },
 ]
 
 slice_resin = [
-  { run = 'chitubox "$@"', block = false, for = "unix", desc = "Slice for resin print" },
+  { run = 'chitubox "$@"', block = false, orphan = true, for = "unix", desc = "Slice for resin print" },
 ]
 
 view_model = [
-  { run = 'glc_player "$@"', block = false, for = "unix", desc = "View 3D model" },
+  { run = 'glc_player "$@"', block = false, orphan = true, for = "unix", desc = "View 3D model" },
 ]
 
 freecad = [
-  { run = 'freecad "$@"', block = false, for = "unix", desc = "Edit in FreeCAD" },
+  { run = 'freecad "$@"', block = false, orphan = true, for = "unix", desc = "Edit in FreeCAD" },
 ]
 
 document_view = [
-  { run = 'okular "$@"', block = false, for = "unix", desc = "View in Okular" },
+  { run = 'okular "$@"', block = false, orphan = true, for = "unix", desc = "View in Okular" },
 ]
 
 [open]
