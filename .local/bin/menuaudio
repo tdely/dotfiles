@@ -6,11 +6,11 @@ set -o nounset
 case "$(printf "Headphones\nSpeakers"|rofi -dmenu -i -l 2 -matching fuzzy -p Audio)" in
   Headphones)
     pactl set-default-sink "alsa_output.usb-fifine_Microphones_fifine_Microphone_REV1.0-00.analog-stereo"
-	notify-send -a "Audio switcher" "Audio switched to headphones"
+	notify-send -i "audio-card" -a "Audio switcher" "Audio switched to headphones"
     ;;
   Speakers)
     pactl set-default-sink "alsa_output.pci-0000_00_1f.3.analog-stereo"
-	notify-send -a "Audio switcher" "Audio switched to speakers"
+	notify-send -i "audio-card" -a "Audio switcher" "Audio switched to speakers"
     ;;
   *) exit 1 ;;
 esac

@@ -54,7 +54,7 @@ if [ -n "$mountpoint" ]; then
   case "$(printf "Unmount\nAbort"|rofi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
     Unmount)
       out=$(udisksctl unmount -b "$dev")
-      notify-send -a "USB mounter" "$out"
+      notify-send -i "media-flash" -a "USB mounter" "$out"
       ;;
     Abort) exit 0 ;;
     *) exit 1 ;;
@@ -69,7 +69,7 @@ else
   case "$(printf "Mount\nAbort"|rofi -dmenu -i -l 2 -matching fuzzy -p "$dev" -mesg "$msg")" in
     Mount)
       out=$(udisksctl mount -b "$dev")
-      notify-send -a "USB mounter" "$out"
+      notify-send -i "media-flash" -a "USB mounter" "$out"
       ;;
     Abort) exit 0 ;;
     *) exit 1 ;;
