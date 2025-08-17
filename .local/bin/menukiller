@@ -8,7 +8,7 @@ case "$(printf "Kill\nLogout\nPoweroff\nReboot"|rofi -dmenu -i -l 4 -matching fu
     x="$(ps -u $USER --sort=-pid -o pid,comm,cmd | rofi -dmenu -i -matching fuzzy -p Kill)"
     if [ "${x#*"PID COMMAND"}" == "$x" ]; then
       echo "$x" | awk '{print $1}' | xargs -r kill
-      notify-send -a "Process killer" "Killed $(echo $x | awk '{print $1 " " $2}')"
+      notify-send -i "cpu" -a "Process killer" "Killed $(echo $x | awk '{print $0 " " $2}')"
     fi
     ;;
   Logout)
