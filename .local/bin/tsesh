@@ -12,7 +12,7 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [ -z $TMUX ];then
-    if [ -z "$tmux_running" ] || [ ! tmux has-session -t="$selected_name" 2> /dev/null ]; then
+    if [ -z "$tmux_running" ] || [ -n "$(tmux has-session -t="$selected_name" 2>&1)" ]; then
       tmux new-session -ds $selected_name -c $selected
     fi
     tmux attach-session -t=$selected_name
