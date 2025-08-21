@@ -3,35 +3,36 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+m='^(-?[0-9]+(\.[0-9]+)?|-?\.[0-9]+)$'
 v="$(printf "Centimeters to inches\nInches to centimeters\nCelsius to Fahrenheit\nFarenheit to Celsius"|rofi -dmenu -i -l 4 -matching fuzzy -p Calculate -mesg "└─ or convert between units ↴")"
 case $v in
   Centimeters*)
     val="$(rofi -dmenu -l 0 -p "Length in centimeters" <&-)"
-    [[ "$val" =~ ^-?[0-9]+(\.[0-9]+)?$ ]] || { rofi -e "Error: not a valid number"; exit 1; }
+    [[ "$val" =~ $m ]] || { rofi -e "Error: not a valid number"; exit 1; }
     i=$(bc <<< "scale=2; ($val / 2.54)")
     r="$val cm is equal to $i\""
     ;;
   Inches*)
     val="$(rofi -dmenu -l 0 -p "Length in inches" <&-)"
-    [[ "$val" =~ ^-?[0-9]+(\.[0-9]+)?$ ]] || { rofi -e "Error: not a valid number"; exit 1; }
+    [[ "$val" =~ $m ]] || { rofi -e "Error: not a valid number"; exit 1; }
     c=$(bc <<< "scale=2; ($val * 2.54)")
     r="$val\" is equal to $c cm"
     ;;
   Celsius*)
     val="$(rofi -dmenu -l 0 -p "Temperature in Celsius" <&-)"
-    [[ "$val" =~ ^-?[0-9]+(\.[0-9]+)?$ ]] || { rofi -e "Error: not a valid number"; exit 1; }
+    [[ "$val" =~ $m ]] || { rofi -e "Error: not a valid number"; exit 1; }
     f=$(bc <<< "scale=2; ($val * 9/5) + 32")
     r="$val°C is equal to $f°F"
     ;;
   Farenheit*)
     val="$(rofi -dmenu -l 0 -p "Temperature in Fahrenheit" <&-)"
-    [[ "$val" =~ ^-?[0-9]+(\.[0-9]+)?$ ]] || { rofi -e "Error: not a valid number"; exit 1; }
+    [[ "$val" =~ $m ]] || { rofi -e "Error: not a valid number"; exit 1; }
     c=$(bc <<< "scale=2; ($val - 32) * 5/9")
     r="$val°F is equal to $c°C"
     ;;
   *)
-    r="$(bc <<< "$v" 2>&1)"
-    [[ "$r" =~ ^-?[0-9]+(\.[0-9]+)?$ ]] || { rofi -e "Error: $r"; exit 1; }
+    r="$(bc <<< "scale=2;$v" 2>&1)"
+    [[ "$r" =~ $m ]] || { rofi -e "Error: $r"; exit 1; }
     ;;
 esac
 rofi -e "${r}"
