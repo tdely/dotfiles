@@ -14,6 +14,8 @@ max() {
   echo $(($1>$2?$1:$2))
 }
 
+export DISPLAY=:0
+
 case "$1" in
   video/brightnessup)
     echo $(min $(($(< $bl_dev/brightness) + $bl_step)) $bl_max) >$bl_dev/brightness
@@ -24,6 +26,7 @@ case "$1" in
   button/power)
     case "$2" in
       PBTN|PWRF)
+        xset dpms force off
         echo -n mem >/sys/power/state
         ;;
     esac
@@ -31,6 +34,7 @@ case "$1" in
   button/sleep)
     case "$2" in
       SLPB|SBTN)
+        set dpms force off
         echo -n mem >/sys/power/state
         ;;
     esac
@@ -78,6 +82,7 @@ case "$1" in
       close)
         #echo 'LID closed'
         if [ $(cat /sys/class/power_supply/AC/online) = "0" ]; then
+          xset dpms force off
           echo -n mem >/sys/power/state
         fi
         ;;
