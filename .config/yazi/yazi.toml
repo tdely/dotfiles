@@ -1,6 +1,10 @@
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = false, orphan = true, for = "unix" },
+  { run = 'konsole -e nvim "$@"', block = false, orphan = true, for = "unix", desc = "Edit with nvim" },
+]
+
+terminal = [
+  { run = 'konsole --workdir "$@"', block = false, orphan = true, for = "unix", desc = "Open in terminal" },
 ]
 
 slice_fdm = [
@@ -41,6 +45,8 @@ prepend_rules = [
   { name = "*.3ds", use = "view_model" },
 
   { name = "*.FCStd", use = "freecad" },
+
+  { mime = "inode/directory", use = "terminal" },
 
   { mime = "application/pdf", use = "document_view" },
   { mime = "application/postscript", use = "document_view" },
