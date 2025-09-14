@@ -27,6 +27,14 @@ document_view = [
   { run = 'okular "$@"', block = false, orphan = true, for = "unix", desc = "View in Okular" },
 ]
 
+mpv = [
+  { run = 'mpv --force-window "$@"', block = false, orphan = true, for = "unix", desc = "Play in mpv" },
+]
+
+vlc = [
+  { run = 'vlc --started-from-file "$@"', block = false, orphan = true, for = "unix", desc = "Play in VLC" },
+]
+
 [open]
 prepend_rules = [
   { name = "*.3mf", use = ["slice_fdm", "slice_resin"] },
@@ -47,6 +55,9 @@ prepend_rules = [
   { name = "*.FCStd", use = "freecad" },
 
   { mime = "inode/directory", use = "terminal" },
+
+  { mime = "video/*", use = ["mpv", "vlc"] },
+  { mime = "audio/*", use = ["mpv", "vlc"] },
 
   { mime = "application/pdf", use = "document_view" },
   { mime = "application/postscript", use = "document_view" },
