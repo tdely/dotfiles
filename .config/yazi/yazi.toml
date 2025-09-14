@@ -1,10 +1,10 @@
 [opener]
 edit = [
-  { run = 'konsole -e nvim "$@"', block = false, orphan = true, for = "unix", desc = "Edit with nvim" },
+  { run = 'konsole -e nvim "$@"', block = false, orphan = true, for = "unix", desc = "Edit in nvim" },
 ]
 
 terminal = [
-  { run = 'konsole --workdir "$@"', block = false, orphan = true, for = "unix", desc = "Open in terminal" },
+  { run = 'konsole --workdir "$@"', block = false, orphan = true, for = "unix", desc = "Open terminal here" },
 ]
 
 slice_fdm = [
