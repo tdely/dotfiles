@@ -38,8 +38,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+e exec konsole -e yazi
 
 bindsym $mod+p exec --no-startup-id ~/.local/bin/menukiller
