@@ -1,5 +1,6 @@
 xhost si:localuser:$USER
 xhost si:localuser:root
+export TERMINAL="/usr/bin/konsole"
 export XDG_CONFIG_DIRS="$HOME/.config/kdedefaults:/etc/xdg"
 export XDG_CONFIG_HOME="$HOME/.config"
 export QT_QPA_PLATFORMTHEME=qt6ct
