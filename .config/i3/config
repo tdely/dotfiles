@@ -50,6 +50,7 @@ bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym Ctrl+Shift+l exec --no-startup-id ~/.local/bin/lock.sh
 
+bindsym $mod+F10 exec --no-startup-id shotgun $(slop -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
 bindsym $mod+F11 exec --no-startup-id shotgun -s ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png
 bindsym $mod+F12 exec --no-startup-id shotgun $(slop -f "-i %i -g %g") ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png
 
