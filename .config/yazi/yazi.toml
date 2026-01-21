@@ -41,24 +41,25 @@ qmmp = [
 
 [open]
 prepend_rules = [
-  { name = "*.3mf", use = ["slice_fdm", "slice_resin"] },
-  { name = "*.obj", use = ["slice_fdm", "slice_resin"] },
-  { name = "*.gcode", use = "slice_fdm" },
-  { name = "*.step", use = "slice_fdm" },
-  { name = "*.ctb", use = "slice_resin" },
-  { name = "*.ctp", use = "slice_resin" },
-  { name = "*.chitubox", use = "slice_resin" },
+  { url = "*.3mf", use = ["slice_fdm", "slice_resin"] },
+  { url = "*.obj", use = ["slice_fdm", "slice_resin"] },
+  { url = "*.gcode", use = "slice_fdm" },
+  { url = "*.step", use = "slice_fdm" },
+  { url = "*.ctb", use = "slice_resin" },
+  { url = "*.ctp", use = "slice_resin" },
+  { url = "*.chitubox", use = "slice_resin" },
 
-  { name = "*.stl", use = ["view_model", "slice_fdm", "slice_resin"] },
-  { name = "*.dae", use = "view_model" },
-  { name = "*.off", use = "view_model" },
-  { name = "*.coff", use = "view_model" },
-  { name = "*.3dxml", use = "view_model" },
-  { name = "*.3ds", use = "view_model" },
+  { url = "*.stl", use = ["view_model", "slice_fdm", "slice_resin"] },
+  { url = "*.dae", use = "view_model" },
+  { url = "*.off", use = "view_model" },
+  { url = "*.coff", use = "view_model" },
+  { url = "*.3dxml", use = "view_model" },
+  { url = "*.3ds", use = "view_model" },
 
-  { name = "*.FCStd", use = "freecad" },
+  { url = "*.FCStd", use = "freecad" },
 
   { mime = "inode/directory", use = "terminal" },
+  { mime = "folder/*", use = "terminal" },
 
   { mime = "video/*", use = ["mpv", "vlc"] },
   { mime = "audio/*", use = ["mpv", "vlc", "qmmp"] },
@@ -68,7 +69,7 @@ prepend_rules = [
   { mime = "application/xps", use = "document_view" },
   { mime = "application/epub+zip", use = "document_view" },
   { mime = "application/x-mobipocket-ebook", use = "document_view" },
-  { name = "*.cbr", use = "document_view" },
-  { name = "*.djvu", use = "document_view" },
-  { name = "*.djv", use = "document_view" },
+  { url = "*.cbr", use = "document_view" },
+  { url = "*.djvu", use = "document_view" },
+  { url = "*.djv", use = "document_view" },
 ]
