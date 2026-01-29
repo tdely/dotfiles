@@ -58,7 +58,7 @@ bindsym $mod+F12 exec --no-startup-id shotgun $(slop -f "-i %i -g %g") ~/Picture
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec "rofi -matching fuzzy -drun-match-fields name,generic -modi drun,run -show drun"
+bindsym $mod+d exec "rofi -drun-match-fields name,generic -modi drun,run -show drun"
 
 # change focus
 bindsym $mod+$left focus left
