@@ -11,6 +11,24 @@ pango_makemodel() {
   printf "<span weight=\"light\" style=\"italic\">($1)</span>"
 }
 
+mounting_info() {
+  # $1 = /dev/x
+  partinfo=$(udisksctl info -b "$1")
+  mounted=$(printf "$partinfo" | grep MountPoints: | awk '{print $2}' || echo -n "missing")
+  label=$(printf "$partinfo" | grep IdLabel: | awk '{print $2}')
+  if [ "$mounted" = "missing" ]; then
+    return
+  elif [ -n "$mounted" ]; then
+    out="$1 [$mounted]"
+  else
+    out="$1"
+  fi
+  if [ -n "$label" ]; then
+    out="$out $(pango_label "$label")"
+  fi
+  printf "$out $(pango_makemodel "${vendor%"${vendor##*[![:space:]]}"} ${model%"${model##*[![:space:]]}"}")"
+}
+
 devices=""
 for device in /sys/block/*; do
   info=$(udevadm info --query property --path $device)
@@ -18,21 +36,24 @@ for device in /sys/block/*; do
     devname="$(printf "$info" | grep ^DEVNAME= | cut -b 9-)"
     model="$(printf "$info" | grep ^ID_MODEL_ENC= | cut -b 14-)"
     vendor="$(printf "$info" | grep ^ID_VENDOR_ENC= | cut -b 15-)"
-    for part in ${devname}[0-9]*
-    do
-      partinfo=$(udisksctl info -b "$part")
-      mounted=$(printf "$partinfo" | grep MountPoints: | awk '{print $2}')
-      label=$(printf "$partinfo" | grep IdLabel: | awk '{print $2}')
-      if [ -n "$mounted" ]; then
-        out="$part [$mounted]"
+    if [ ! -b ${devname}1 ]; then
+      info=$(mounting_info $devname)
+      if [ -n "$info" ]; then
+        devices="$devices\n$info"
       else
-        out="$part"
+        echo "no mountpoint info available for device $devname"
       fi
-      if [ -n "$label" ]; then
-        out="$out $(pango_label "$label")"
-      fi
-      devices="$devices\n$out $(pango_makemodel "${vendor%"${vendor##*[![:space:]]}"} ${model%"${model##*[![:space:]]}"}")"
-    done
+    else
+      for part in ${devname}[0-9]*
+      do
+        info=$(mounting_info $part)
+        if [ -n "$info" ]; then
+          devices="$devices\n$info"
+        else
+          echo "no mountpoint info available for partition $part"
+        fi
+      done
+    fi
   fi
 done
 
