@@ -3,9 +3,9 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-case "$(printf "Kill\nLogout\nPoweroff\nReboot"|rofi -dmenu -i -l 4 -matching fuzzy -p " ")" in
+case "$(printf "Kill\nLogout\nPoweroff\nReboot"|rofi -dmenu -i -l 4 -p " ")" in
   Kill)
-    x="$(ps -u $USER --sort=-pid -o pid,comm,cmd | rofi -dmenu -i -matching fuzzy -p Kill)"
+    x="$(ps -u $USER --sort=-pid -o pid,comm,cmd | rofi -dmenu -i -p Kill)"
     if [ "${x#*"PID COMMAND"}" == "$x" ]; then
       echo "$x" | awk '{print $1}' | xargs -r kill
       notify-send -i "cpu" -a "Process killer" "Killed $(echo $x | awk '{print $0 " " $2}')"
