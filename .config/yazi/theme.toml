@@ -209,6 +209,7 @@ footer  = { fg = "black", bg = "white" }
 [filetype]
 rules = [
 	{ mime = "inode/directory", fg = "#ffd7af" },
+	{ mime = "folder/*", fg = "#ffd7af" },
 	# Images
 	{ mime = "image/*", fg = "lightblue" },
 
