@@ -42,6 +42,18 @@ vlc = [
   { run = 'vlc --started-from-file "$@"', block = false, orphan = true, for = "unix", desc = "Play in VLC" },
 ]
 
+geeqie = [
+  { run = 'geeqie "$@"', block = false, orphan = true, for = "unix", desc = "View in Geeqie" },
+]
+
+feh = [
+  { run = 'feh "$@"', block = false, orphan = true, for = "unix", desc = "View in feh" },
+]
+
+edit_image = [
+  { run = 'krita "$@"', block = false, orphan = true, for = "unix", desc = "Edit in Krita" },
+]
+
 qmmp = [
   { run = 'qmmp --enqueue "$@"', block = false, orphan = true, for = "unix", desc = "Enqueue in qmmp" },
 ]
@@ -70,6 +82,8 @@ prepend_rules = [
 
   { mime = "video/*", use = ["mpv", "vlc"] },
   { mime = "audio/*", use = ["mpv", "vlc", "qmmp"] },
+
+  { mime = "image/*", use = ["geeqie", "feh", "edit_image"] },
 
   { mime = "application/pdf", use = "document_view" },
   { mime = "application/postscript", use = "document_view" },
