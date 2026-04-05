@@ -49,6 +49,7 @@ bindsym $mod+Shift+p exec --no-startup-id ~/.local/bin/clipboard
 bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym Ctrl+Shift+l exec --no-startup-id ~/.local/bin/lock.sh
+bindsym $mod+Shift+m exec --no-startup-id qmmp --no-start --toggle-visibility
 
 bindsym $mod+F10 exec --no-startup-id shotgun $(slop -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
 bindsym $mod+F11 exec --no-startup-id shotgun -s ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png
@@ -252,9 +253,10 @@ no_focus [class="plasmashell" window_type="notification"]
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
 
-for_window [class="kcalc"] floating enable; border none
-for_window [class="XIVLauncher.Core"] floating enable; border none
+for_window [class="kcalc"] floating enable
+for_window [class="XIVLauncher.Core"] floating enable
 for_window [class="7zFM"] floating enable
+for_window [class="NoiseTorch"] floating enable
 
 # Steam compatibility
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
@@ -271,7 +273,6 @@ smart_gaps on
 smart_gaps inverse_outer
 
 exec --no-startup-id feh --no-fehbg --bg-scale ~/.config/i3/wallpaper.png
-#exec --no-startup-id XDG_MENU_PREFIX=plasma- kbuildsycoca6
 
 exec --no-startup-id xset dpms 0 0 120
 exec --no-startup-id xset +dpms
