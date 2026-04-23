@@ -45,11 +45,12 @@ bindsym $mod+p exec --no-startup-id ~/.local/bin/menukiller
 bindsym $mod+o exec --no-startup-id ~/.local/bin/menuaudio
 bindsym $mod+m exec --no-startup-id ~/.local/bin/menumount
 bindsym $mod+c exec --no-startup-id ~/.local/bin/bccalc
+bindsym $mod+Ctrl+e exec --no-startup-id ~/.local/bin/emojiselector
 bindsym $mod+Shift+p exec --no-startup-id ~/.local/bin/clipboard
 bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
-bindsym Ctrl+Shift+l exec --no-startup-id ~/.local/bin/lock.sh
 bindsym $mod+Shift+m exec --no-startup-id qmmp --no-start --toggle-visibility
+bindsym Ctrl+Shift+l exec --no-startup-id ~/.local/bin/lock.sh
 
 bindsym $mod+F10 exec --no-startup-id shotgun $(slop -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
 bindsym $mod+F11 exec --no-startup-id shotgun -s ~/Pictures/Screenshots/$(date +"%Y%m%d_%H%M%S").png
