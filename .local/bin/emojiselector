@@ -6,5 +6,4 @@ set -o nounset
 emojis="$XDG_DATA_HOME/emojis.tsv"
 touch "$emojis"
 
-x=$(cat "$emojis" | rofi -dmenu -i -l 10 -p " ")
-echo $x | awk '{print $1}' |  xclip -selection "clipboard"
+cat "$emojis" | rofi -dmenu -i -l 10 -p " " | awk '{ORS=""; print $1}' | xclip -selection "clipboard"
