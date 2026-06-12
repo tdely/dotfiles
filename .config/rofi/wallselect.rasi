@@ -1,0 +1,35 @@
+@import "gruvbox-dark-soft"
+
+* {
+    normal-background:           var(background);
+    alternate-normal-background: var(background);
+}
+
+entry {
+  background-color: transparent;
+  padding: 0;
+}
+
+listview {
+  columns: 4;
+  lines: 1;
+  flow: horizontal;
+  require-input: false;
+  dynamic: false;
+  fixed-height: true;
+  background-color: transparent;
+}
+
+element {
+  orientation: vertical;
+  padding: 12px;
+}
+
+element-icon {
+  size: 132px;
+}
+
+element-text {
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+}

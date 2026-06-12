@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+set -o errexit
+set -o pipefail
+set -o nounset
+
+dir="$HOME/Pictures/Wallpapers"
+current="$HOME/.local/state/current-wallpaper"
+theme="$HOME/.config/rofi/wallselect.rasi"
+
+mapfile -t walls< <(find -L "$dir" -mindepth 1 -type f \
+    \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \)|sort)
+
+i=$(
+  for wall in "${walls[@]}"; do
+    printf '%s\0icon\x1f%s\n' "${wall#$dir/}" "$wall"
+  done | rofi -dmenu -i -show-icons -no-custom -disable-history -format i -p "Wallpaper" -lines 1 -columns 4 -theme "$theme"
+)
+
+wall="${walls[$i]}"
+
+cp "$wall" "$current"
+feh --no-fehbg --bg-scale "$current"

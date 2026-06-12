@@ -46,6 +46,7 @@ bindsym $mod+o exec --no-startup-id ~/.local/bin/menuaudio
 bindsym $mod+m exec --no-startup-id ~/.local/bin/menumount
 bindsym $mod+c exec --no-startup-id ~/.local/bin/bccalc
 bindsym $mod+Ctrl+e exec --no-startup-id ~/.local/bin/emojiselector
+bindsym $mod+Ctrl+w exec --no-startup-id ~/.local/bin/wallselect
 bindsym $mod+Shift+p exec --no-startup-id ~/.local/bin/clipboard
 bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/audioswitcher
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/audioswitcher
@@ -273,7 +274,7 @@ gaps outer 2
 smart_gaps on
 smart_gaps inverse_outer
 
-exec --no-startup-id feh --no-fehbg --bg-scale ~/.config/i3/wallpaper.png
+exec --no-startup-id feh --no-fehbg --bg-scale ~/.local/state/current-wallpaper
 
 exec --no-startup-id xset dpms 0 0 120
 exec --no-startup-id xset +dpms
